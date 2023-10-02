@@ -17,14 +17,14 @@ interface BaseField {
 	label?: string;
 	placeholder?: string;
 	dependency?: Dependency;
-	validationParams?: ValidationSchema;
+	validation?: ValidationSchema;
 }
 
 interface StandardField extends BaseField {
 	type: Omit<DataType, DataType.CUSTOM>;
 }
 
-interface CustomField {
+interface CustomField extends BaseField {
 	type: DataType.CUSTOM;
 }
 

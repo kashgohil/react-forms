@@ -1,4 +1,11 @@
 export enum ResultType {
-  PASSED = 'PASSED',
-  FAILED = 'FAILED'
+	PASSED = 'PASSED',
+	FAILED = 'FAILED',
+}
+
+export enum ErrorType {
+	MIN_FAILED = 'MIN_FAILED',
+	MAX_FAILED = 'MAX_FAILED',
+	REGEX_FAILED = 'REGEX_FAILED',
+	REQUIRED_FAILED = 'REQUIRED_FAILED',
 }

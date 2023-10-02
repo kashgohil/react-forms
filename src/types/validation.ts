@@ -1,4 +1,4 @@
-import { ResultType } from '../constants';
+import { ErrorType, ResultType } from '../constants';
 import { DataType } from '../constants/dataTypes';
 
 export interface ValidationSchema {
@@ -7,7 +7,7 @@ export interface ValidationSchema {
 	max?: number;
 	type: DataType;
 	required?: boolean;
-	customErrorMessage?(result: ValidationResult): string;
+	customErrorMessage?(result: Omit<ValidationResult, 'errorMessage'>): string;
 }
 
 interface ValidationResultPassed {
@@ -16,6 +16,7 @@ interface ValidationResultPassed {
 
 interface ValidationResultFailed {
 	result: ResultType.FAILED;
+	errorType: ErrorType;
 	errorMessage?: string;
 }
 
