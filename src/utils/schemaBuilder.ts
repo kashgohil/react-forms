@@ -1,9 +1,11 @@
-import { ValidationSchema } from '../types/validationSchema';
+import { ValidationResult, ValidationSchema } from '../types/validation';
 import { DataType } from './../constants/dataTypes';
 import { _deepClone } from './utils';
 
 export function SchemaBuilder(initialSchema?: ValidationSchema) {
-	const schema: ValidationSchema = initialSchema ? _deepClone(initialSchema) : {};
+	const schema: ValidationSchema = initialSchema
+		? (_deepClone(initialSchema) as ValidationSchema)
+		: ({ type: DataType.TEXT } as ValidationSchema);
 
 	return {
 		type(type: DataType) {
@@ -25,6 +27,9 @@ export function SchemaBuilder(initialSchema?: ValidationSchema) {
 		required(required: boolean) {
 			schema.required = required;
 			return this;
+		},
+		customErrorMessage(fn: (result: ValidationResult) => string) {
+			return (schema.customErrorMessage = fn);
 		},
 		build() {
 			return schema;

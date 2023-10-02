@@ -21,5 +21,6 @@ export enum DataType {
 	DATE = 'DATE',
 	FILE = 'FILE',
 	EMAIL = 'EMAIL',
+	CUSTOM = 'CUSTOM',
 	PHONE_NUMBER = 'PHONE_NUMBER',
 }
